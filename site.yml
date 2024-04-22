@@ -1,0 +1,40 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+  roles:
+    - common
+
+- hosts: dev
+  vars:
+    nginx_hostname: variable.com www.variable.com www.www.variable.com
+    db_user: pgsqlcustomuser
+    db_password: pgsqlcustompassword
+    db_name: customdatabase
+    db_schema: customschema
+    node_server_port: 3000
+    es_cluster_name: production-cluster
+    es_node_name: "node-{{ ansible_hostname }}"
+    php_db_user: 'php_user'
+    php_db_password: 'php_password'
+
+  roles:
+    - php_deployment # ok, phpinfo
+    - nginx # ok
+    - phpfpm # ok
+    - nvm-nodejs # ok
+    - pgsql # ok
+    - elsearch # ok
+    - node_deployment # ok, hello-world
+
+- hosts: server00
+  roles:
+    - nginx
+
+- hosts: server01
+  roles:
+    - nginx
+
+- hosts: server02
+  roles:
+    - nginx

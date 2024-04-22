@@ -1,0 +1,9 @@
+---
+repo_url: 'https://github.com/enginops/phpinfo.git'
+repo_branch: 'main'
+deploy_path: '/var/www/php_deployment'
+php_version: '8.2'
+php_db_user: 'dbuser'
+php_db_password: 'dbpass'
+php_db_host: 'localhost'
+php_db_name: 'dbname'

@@ -1,0 +1,5 @@
+---
+app_directory: '/opt/mosy/mServer/www'
+repo_url: 'https://github.com/enginops/nodehello.git'
+repo_branch: 'main'
+helloapp_directory: '/opt/mosy/mServer/www/hello-world' # For infrastructure test

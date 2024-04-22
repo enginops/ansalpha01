@@ -1,0 +1,6 @@
+---
+# - name: Execute bash 
+#   ansible.builtin.shell: echo "Hello from Ansible, common" >> /tmp/ansible_test.txt 
+- name: Ensure apt repositories are up to date
+  apt:
+    update_cache: yes

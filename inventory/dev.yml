@@ -1,0 +1,6 @@
+---
+all:
+  children:
+    dev:
+      hosts:
+        localhost: # running on localhost, on any node with any hostname

@@ -1,0 +1,57 @@
+---
+- name: Create base directory structure
+  ansible.builtin.file:
+    path: "{{ app_directory }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
+- name: Create subdirectories
+  ansible.builtin.file:
+    path: "{{ app_directory }}/{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - mOffice
+    - mPatrol
+    - hello-world # For infrastructure test
+  become: true
+
+- name: Check if the destination is a Git repository
+  ansible.builtin.stat:
+    path: "{{ helloapp_directory }}/.git"
+  register: git_repo
+
+- name: Update existing Git repository
+  ansible.builtin.git:
+    repo: "{{ repo_url }}"
+    dest: "{{ helloapp_directory }}"
+    version: "{{ repo_branch }}"
+    update: yes
+  when: git_repo.stat.exists
+
+- name: Clone Git repository
+  ansible.builtin.git:
+    repo: "{{ repo_url }}"
+    dest: "{{ helloapp_directory }}"
+    version: "{{ repo_branch }}"
+  when: not git_repo.stat.exists
+  register: git_result
+
+# - name: Install Node.js dependencies
+#   ansible.builtin.command:
+#     cmd: npm install
+#     chdir: "{{ helloapp_directory }}"
+#   become: true
+
+- name: Start the Node.js application
+  ansible.builtin.command:
+    cmd: node hello.js # Dumb application
+    chdir: "{{ helloapp_directory }}"
+  become: true
+  async: 15
+  poll: 0

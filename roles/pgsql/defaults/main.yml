@@ -1,0 +1,5 @@
+---
+db_user: myuser_default
+db_password: securepassword_default
+db_name: mydatabase_default
+db_schema: myschema_default

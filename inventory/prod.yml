@@ -1,0 +1,12 @@
+---
+all:
+  children:
+    server00:
+      hosts:
+        server00: # server00 hostname
+    server01:
+      hosts:
+        server01: # server01 hostname
+    server02:
+      hosts:
+        server02: # server02 hostname

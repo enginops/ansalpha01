@@ -1,0 +1,31 @@
+---
+- name: Install required packages for building node
+  apt:
+    name:
+      - curl
+      - build-essential
+    state: present
+    update_cache: yes
+
+- name: Download NVM install script
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh
+    dest: /tmp/install_nvm.sh
+    mode: '0755'
+
+- name: Install NVM
+  command: bash /tmp/install_nvm.sh creates=/root/.nvm
+
+- name: Source NVM in shell
+  ansible.builtin.shell: |
+    . $HOME/.nvm/nvm.sh
+    nvm install --lts
+    nvm use --lts
+    nvm alias default $(node --version)
+  args:
+    executable: /bin/bash
+
+- name: Place default Node.js configuration file
+  template:
+    src: node_config.j2
+    dest: /etc/node_config.json

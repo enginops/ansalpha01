@@ -1,0 +1,8 @@
+---
+es_cluster_name: mycluster
+es_node_name: node-1
+es_data_path: /var/lib/elasticsearch
+es_logs_path: /var/log/elasticsearch
+es_network_host: 0.0.0.0
+es_http_port: 8080
+es_seed_hosts: "127.0.0.1"
