@@ -8,10 +8,10 @@
 - hosts: dev
   vars:
     nginx_hostname: variable.com www.variable.com www.www.variable.com
-    db_user: pgsqlcustomuser
-    db_password: pgsqlcustompassword
-    db_name: customdatabase
-    db_schema: customschema
+    db_user: mosy
+    db_password: ChangeMePlease
+    db_name: mserver_moldova
+    db_schema: mosy
     node_server_port: 3000
     es_cluster_name: production-cluster
     es_node_name: "node-{{ ansible_hostname }}"
