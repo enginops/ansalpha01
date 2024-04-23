@@ -20,8 +20,8 @@
 
   roles:
     # - php_deployment # ok, phpinfo
-    - nginx # ok
     - phpfpm # ok
+    - nginx # ok
     - nvm-nodejs # ok
     - pgsql # ok
     - elsearch # ok

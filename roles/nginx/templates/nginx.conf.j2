@@ -5,7 +5,7 @@ http {
   server {
     listen 80;
     server_name {{ nginx_hostname }};
-    root /var/www/php_deployment;
+    root /var/www/html;
     location / { 
         proxy_pass http://localhost:3000; # node
         proxy_http_version 1.1; 
