@@ -19,13 +19,13 @@
     php_db_password: 'php_password'
 
   roles:
-    - php_deployment # ok, phpinfo
+    # - php_deployment # ok, phpinfo
     - nginx # ok
     - phpfpm # ok
     - nvm-nodejs # ok
     - pgsql # ok
     - elsearch # ok
-    - node_deployment # ok, hello-world
+    # - node_deployment # ok, hello-world
 
 - hosts: server00
   roles:
